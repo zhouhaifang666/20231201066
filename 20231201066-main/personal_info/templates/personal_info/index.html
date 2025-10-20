@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人信息</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .info-item {
+            margin: 15px 0;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        .label {
+            font-weight: bold;
+            color: #666;
+        }
+        .value {
+            color: #333;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>个人信息</h1>
+        <div class="info-item">
+            <span class="label">姓名：</span>
+            <span class="value">{{ name }}</span>
+        </div>
+        <div class="info-item">
+            <span class="label">学号：</span>
+            <span class="value">{{ student_id }}</span>
+        </div>
+        <div class="info-item">
+            <span class="label">班级：</span>
+            <span class="value">{{ class_name }}</span>
+        </div>
+        <div style="margin-top: 30px; text-align: center;">
+            <a href="/html/">返回HTML项目</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Single Page</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 20px;
+                background-color: #f5f5f5;
+            }
+            .container {
+                max-width: 800px;
+                margin: 0 auto;
+                background: white;
+                padding: 30px;
+                border-radius: 8px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+            h1 {
+                color: #333;
+                text-align: center;
+                margin-bottom: 30px;
+            }
+            button {
+                background-color: #007bff;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                margin: 5px;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+            button:hover {
+                background-color: #0056b3;
+            }
+            #content {
+                margin-top: 20px;
+                padding: 20px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                min-height: 100px;
+                background-color: #f9f9f9;
+            }
+        </style>
+        <script>
+            // When back arrow is clicked, show previous section
+            window.onpopstate = function(event) {
+                console.log(event.state.section);
+                showSection(event.state.section);
+            }
+
+            function showSection(section) {
+                fetch(`/html/sections/${section}`)
+                .then(response => response.text())
+                .then(text => {
+                    console.log(text);
+                    document.querySelector('#content').innerHTML = text;
+                });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelectorAll('button').forEach(button => {
+                    button.onclick = function() {
+                        const section = this.dataset.section;
+
+                        // Add the current state to the history
+                        history.pushState({section: section}, "", `section${section}`);
+                        showSection(section);
+                    };
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Hello!</h1>
+            <button data-section="1">Section 1</button>
+            <button data-section="2">Section 2</button>
+            <button data-section="3">Section 3</button>
+            <div id="content">
+                Click a button to load content
+            </div>
+            <div style="margin-top: 20px; text-align: center;">
+                <a href="/personal/">Go to Personal Info</a>
+            </div>
+        </div>
+    </body>
+</html>

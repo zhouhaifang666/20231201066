@@ -1,6 +1,5 @@
 # Django
 *.pyc
-*/
 __pycache__/
 *.pyo
 *.pyd
